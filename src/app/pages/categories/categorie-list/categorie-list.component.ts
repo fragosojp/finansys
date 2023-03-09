@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Categorie } from '../shared/categorie.model';
-import { CategoryService } from '../shered/category.service';
+import { CategoryService } from '../shared/category.service';
 
 @Component({
   selector: 'app-category-list',
@@ -19,13 +19,18 @@ export class CategorieListComponent implements OnInit {
     );
   }
 
-  deleteCategorie(categorie: Categorie) {
+  deleteCategorie(categorie: Categorie): void {
     const mustDelete = confirm('Deseja realmente excluir este item?');
 
     if (mustDelete)
       this.categorieService.delete(Number(categorie.id)).subscribe(
-        () => (this.categories = this.categories.filter((e) => e != categorie)),
-        () => alert('Erro ao tentar exluir!')
+        (res) => {
+          console.log(res);
+          this.categories = this.categories.filter((e) => e != categorie);
+        },
+        (error) => {
+          alert('Erro ao tentar exluir!');
+        }
       );
   }
 }

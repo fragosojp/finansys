@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
-import { Categorie } from '../shared/categorie.model';
+import { Categorie } from './categorie.model';
 
 @Injectable({
   providedIn: 'root',
