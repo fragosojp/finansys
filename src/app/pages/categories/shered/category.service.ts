@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Categorie } from '../shared/categorie.model';
 import { catchError, map } from 'rxjs/operators';
+
+import { Categorie } from '../shared/categorie.model';
 
 @Injectable({
   providedIn: 'root',
