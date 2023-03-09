@@ -9,7 +9,6 @@ import { CategoryService } from '../shered/category.service';
 })
 export class CategorieListComponent implements OnInit {
   categories: Categorie[] = [];
-  teste123: string = '123';
 
   constructor(private categorieService: CategoryService) {}
 
@@ -20,15 +19,13 @@ export class CategorieListComponent implements OnInit {
     );
   }
 
-  deleteCategorie(categorie: any) {
-    console.log(categorie);
-    this.categorieService.delete(categorie.id).subscribe(
-      () => (this.categories = this.categories.filter((e) => e != categorie)),
-      () => alert('Erro ao tentar exluir!')
-    );
-  }
+  deleteCategorie(categorie: Categorie) {
+    const mustDelete = confirm('Deseja realmente excluir este item?');
 
-  teste(): void {
-    return console.log('teste');
+    if (mustDelete)
+      this.categorieService.delete(Number(categorie.id)).subscribe(
+        () => (this.categories = this.categories.filter((e) => e != categorie)),
+        () => alert('Erro ao tentar exluir!')
+      );
   }
 }
