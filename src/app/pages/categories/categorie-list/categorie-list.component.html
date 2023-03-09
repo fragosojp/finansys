@@ -1,1 +1,72 @@
-<p>category-list works!</p>
+<nav class="mb-5 bg-light rounded-1 Small shadow p-1">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Categorias</li>
+    </ol>
+  </div>
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-start pl-2">Categorias</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="new" class="btn btn-success float-end">+ Nova Categoria</a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="bg-dark text-light">
+      <th>Categori</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Lazer</strong><br /><small>Cinema, parque, praia etc...</small>
+      </td>
+      <td>
+        <a [routerLink]="[123, 'edit']" class="btn btn-outline-info btn-sm me-3"
+          >Editar</a
+        >
+
+        <a onclick="alert('Excluido')" class="btn btn-outline-danger btn-sm"
+          >Excluir</a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Lazer</strong><br /><small>Cinema, parque, praia etc...</small>
+      </td>
+      <td>
+        <a [routerLink]="[123, 'edit']" class="btn btn-outline-info btn-sm me-3"
+          >Editar</a
+        >
+
+        <a onclick="alert('Excluido')" class="btn btn-outline-danger btn-sm"
+          >Excluir</a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Lazer</strong><br /><small>Cinema, parque, praia etc...</small>
+      </td>
+      <td>
+        <a [routerLink]="[123, 'edit']" class="btn btn-outline-info btn-sm me-3"
+          >Editar</a
+        >
+
+        <a onclick="alert('Excluido')" class="btn btn-outline-danger btn-sm"
+          >Excluir</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
