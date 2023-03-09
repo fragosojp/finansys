@@ -9,7 +9,7 @@ import { Categorie } from '../shared/categorie.model';
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiPath: string = 'api/categoies';
+  private apiPath: string = 'api/categories';
 
   constructor(private http: HttpClient) {}
 
