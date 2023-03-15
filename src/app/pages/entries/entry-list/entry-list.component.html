@@ -1,0 +1,65 @@
+<nav class="mb-5 bg-light">
+  <div class="container rounded-1 Small bg-dark shadow">
+    <ol class="breadcrumb p-2">
+      <li class="breadcrumb-item">
+        <a routerLink="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active">Lançamentos</li>
+    </ol>
+  </div>
+</nav>
+
+<div class="row mb-4">
+  <div class="col-md">
+    <h1 class="h2 border-start pl-2">Lançamentos</h1>
+  </div>
+  <div class="col-md">
+    <a routerLink="new" class="btn btn-success float-end">+ Novo Lançamento</a>
+  </div>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="bg-dark text-light">
+      <th>Lançamento</th>
+      <th>Categoria</th>
+      <th class="text-end">Valor R$</th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of entries">
+      <td>
+        <strong>{{ entry.name }}</strong
+        ><br /><small class="text-success">{{ entry.date }}</small
+        ><br /><small *ngIf="entry.description">{{ entry.description }}</small>
+      </td>
+      <td>
+        {{ entry.categorie?.name }}
+      </td>
+      <td class="text-end">
+        <strong
+          [class.text-success]="entry.type == 'revenue'"
+          [class.text-danger]="entry.type == 'expense'"
+        >
+          {{ entry.amount }}
+        </strong>
+        <br />
+        <strong class="badge badge-info bg-dark text-end">{{
+          entry.paidText
+        }}</strong>
+      </td>
+      <td class="text-center">
+        <a
+          [routerLink]="[entry.id, 'edit']"
+          class="btn btn-outline-info btn-sm me-3"
+          >Editar</a
+        >
+
+        <a (click)="deleteEntry(entry)" class="btn btn-outline-danger btn-sm"
+          >Excluir</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
