@@ -28,9 +28,34 @@
     <div class="card-header">Informações sobre o lançamento</div>
 
     <div class="card-body">
-      <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="name">Nome</label>
+      <!-- Type -->
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="type">Tipo</label>
+          <select
+            class="form-control"
+            name="type"
+            id="type"
+            formControlName="type"
+          >
+            <option value="expense">Despesa</option>
+            <option value="revenue">Receita</option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              form.controls['type'].invalid && form.controls['type'].touched
+            "
+          >
+            <div *ngIf="form.controls['type'].hasError('required')">
+              Dados obrigatórios
+            </div>
+          </div>
+        </div>
+
+        <!-- Name -->
+        <div class="form-group col-md-5">
+          <label for="name">Lançamento</label>
           <input
             class="form-control"
             id="name"
@@ -52,6 +77,60 @@
           </div>
         </div>
 
+        <!-- Amount -->
+        <div class="form-group col-md-3">
+          <label for="amount">Valor</label>
+          <div class="input-group">
+            <div class="input-grou-prepend">
+              <div class="input-group-text">R$</div>
+            </div>
+            <input
+              [imask]="imaskConfig"
+              class="form-control text-end"
+              id="name"
+              type="amount"
+              formControlName="amount"
+            />
+          </div>
+          <div
+            class="text-danger"
+            *ngIf="
+              form.controls['amount'].invalid && form.controls['amount'].touched
+            "
+          >
+            <div *ngIf="form.controls['amount'].hasError('required')">
+              Dados obrigatórios
+            </div>
+          </div>
+        </div>
+
+        <!-- Date -->
+        <div class="form-group col-md-2">
+          <label for="date">Data</label>
+          <p-calendar
+            id="date"
+            formControlName="date"
+            inputStyleClass="form-control"
+            dataType="string"
+            dateFormat="dd/mm/yy"
+            [locale]="ptBR"
+            [showButtonBar]="true"
+          ></p-calendar>
+          <div
+            class="text-danger"
+            *ngIf="
+              form.controls['date'].invalid && form.controls['date'].touched
+            "
+          >
+            <div *ngIf="form.controls['date'].hasError('required')">
+              Dados obrigatórios
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Description -->
         <div class="form-group col-md-8">
           <label for="description">Descrição</label>
           <input

@@ -7,15 +7,15 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Entry } from '../shared/entry.model';
-import { EntryService } from '../shared/entry.service';
-
 import { switchMap } from 'rxjs';
 
 import * as toastr from 'toastr';
 
+import { Entry } from '../shared/entry.model';
+import { EntryService } from '../shared/entry.service';
+
 @Component({
-  selector: 'app-category-form',
+  selector: 'app-entry-form',
   templateUrl: './entry-form.component.html',
   styleUrls: ['./entry-form.component.css'],
 })
@@ -26,6 +26,60 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   serverErrorMessages?: string[]; // array de erros, mensagems retornadas do servidor
   submittingForm: boolean = false; // Controlar botão de submeter, desabilitar até que o server retorne uma resposta
   entry: Entry = new Entry(); // proprio objeto de Category
+
+  imaskConfig = {
+    mask: Number,
+    scale: 2,
+    thousandsseparator: '',
+    padFractionalZeros: true,
+    normalizeZeros: true,
+    radix: ',',
+  };
+
+  ptBR = {
+    firstDayOfWeek: 0,
+    dayNames: [
+      'Domingo',
+      'Segunda',
+      'Terça',
+      'Quarta',
+      'Quinta',
+      'Sexta',
+      'Sábado',
+    ],
+    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+    dayNamesMin: ['Do', 'Se', 'Te', 'Qu', 'Qu', 'Se', 'Sa'],
+    monthNames: [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro',
+    ],
+    monthNamesShort: [
+      'Jan',
+      'Fev',
+      'Mar',
+      'Abr',
+      'Mai',
+      'Jun',
+      'Jul',
+      'Ago',
+      'Set',
+      'Out',
+      'Nov',
+      'Dez',
+    ],
+    today: 'Hoje',
+    clear: 'Limpar',
+  };
 
   constructor(
     private entryService: EntryService,
