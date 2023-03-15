@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PrimeNGConfig } from 'primeng/api';
 
 import { switchMap } from 'rxjs';
 
@@ -85,7 +86,8 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     private entryService: EntryService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private primeNGConfig: PrimeNGConfig
   ) {}
 
   form = this.formBuilder.group({
@@ -102,6 +104,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   ngOnInit() {
     this.setCurrentAction(); // IDENTIFICAR SE ESTA EDITANDO OU CRIANDO
     this.loadEntry(); // VERIFICAR SE ESTA EDITANTO OU CRIANDO
+    this.primeNGConfig.setTranslation(this.ptBR);
   }
 
   ngAfterContentChecked(): void {
