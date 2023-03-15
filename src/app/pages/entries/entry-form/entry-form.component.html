@@ -5,7 +5,7 @@
         <a routerLink="/">Home</a>
       </li>
       <li class="breadcrumb-item">
-        <a routerLink="/categories">Categorias</a>
+        <a routerLink="/entries">Lançamentos</a>
       </li>
       <li class="breadcrumb-item active">{{ pageTitle }}</li>
     </ol>
@@ -13,19 +13,19 @@
 </nav>
 
 <div class="row mb-4">
-  <div class="col-md">
+  <div class="col-md-9">
     <h1 class="h2 border-start pl-2">
       {{ pageTitle }}
     </h1>
   </div>
-  <div class="col-md">
-    <a routerLink="/categories" class="btn btn-light float-end">Voltar</a>
+  <div class="col-md-3">
+    <a routerLink="/entries" class="btn btn-light float-end">Voltar</a>
   </div>
 </div>
 
 <form [formGroup]="form" (submit)="submitForm()">
   <div class="card mb-3">
-    <div class="card-header">Informações sobre a categoria</div>
+    <div class="card-header">Informações sobre o lançamento</div>
 
     <div class="card-body">
       <div class="form-row">

@@ -27,18 +27,23 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   submittingForm: boolean = false; // Controlar botão de submeter, desabilitar até que o server retorne uma resposta
   entry: Entry = new Entry(); // proprio objeto de Category
 
-  form = this.formBuilder.group({
-    id: [0],
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    description: ['', [Validators.required, Validators.minLength(3)]],
-  });
-
   constructor(
     private entryService: EntryService,
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder
   ) {}
+
+  form = this.formBuilder.group({
+    id: [0],
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    description: ['', [Validators.required, Validators.minLength(3)]],
+    type: ['', [Validators.required]],
+    amount: ['', [Validators.required]],
+    date: ['', [Validators.required]],
+    paid: [true || false, [Validators.required]],
+    categorieId: [0, [Validators.required]],
+  });
 
   ngOnInit() {
     this.setCurrentAction(); // IDENTIFICAR SE ESTA EDITANDO OU CRIANDO
@@ -86,7 +91,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
       this.pageTitle = 'Cadastro de Nova Categoria';
     else {
       const entryName = this.entry.name || '';
-      this.pageTitle = `Editando Categoria: ${entryName}`;
+      this.pageTitle = `Editando Lançamento: ${entryName}`;
     }
   }
 
