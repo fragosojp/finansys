@@ -38,8 +38,9 @@
             id="type"
             formControlName="type"
           >
-            <option value="expense">Despesa</option>
-            <option value="revenue">Receita</option>
+            <option *ngFor="let option of typeOptions" [value]="option.value">
+              {{ option.text }}
+            </option>
           </select>
           <div
             class="text-danger"
@@ -107,6 +108,7 @@
         <!-- Date -->
         <div class="form-group col-md-2">
           <label for="date">Data</label>
+          <br />
           <p-calendar
             id="date"
             formControlName="date"
@@ -129,8 +131,65 @@
       </div>
 
       <div class="row">
+        <!-- Paid -->
+        <div class="form-group col-md-2">
+          <label for="paid center">Pago</label>
+          <br />
+          <div class="btn-group">
+            <label
+              (click)="form.get('paid')?.setValue(true)"
+              [class.active]="form.get('paid')?.value == true"
+              class="btn btn-outline-info"
+              >Pago</label
+            >
+            <label
+              (click)="form.get('paid')?.setValue(false)"
+              [class.active]="form.get('paid')?.value == false"
+              class="btn btn-outline-info"
+              >Pendente</label
+            >
+          </div>
+
+          <div
+            class="text-danger"
+            *ngIf="
+              form.controls['paid'].invalid && form.controls['paid'].touched
+            "
+          >
+            <div *ngIf="form.controls['paid'].hasError('required')">
+              Dados obrigatórios
+            </div>
+          </div>
+        </div>
+
+        <!-- Categorie -->
+        <div class="form-group col-md-3">
+          <label for="categorieId">Categoria</label>
+          <select
+            class="form-control"
+            name="categorieId"
+            id="categorieId"
+            formControlName="categorieId"
+          >
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
+          </select>
+          <div
+            class="text-danger"
+            *ngIf="
+              form.controls['categorieId'].invalid &&
+              form.controls['categorieId'].touched
+            "
+          >
+            <div *ngIf="form.controls['categorieId'].hasError('required')">
+              Dados obrigatórios
+            </div>
+          </div>
+        </div>
+
         <!-- Description -->
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-7">
           <label for="description">Descrição</label>
           <input
             type="text"

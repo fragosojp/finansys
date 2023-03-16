@@ -12,6 +12,9 @@ import { switchMap } from 'rxjs';
 
 import * as toastr from 'toastr';
 
+import { Categorie } from '../../categories/shared/categorie.model';
+import { CategoryService } from '../../categories/shared/category.service';
+
 import { Entry } from '../shared/entry.model';
 import { EntryService } from '../shared/entry.service';
 
@@ -22,11 +25,11 @@ import { EntryService } from '../shared/entry.service';
 })
 export class EntryFormComponent implements OnInit, AfterContentChecked {
   currentAction: string = 'new'; // Novo / Alterar
-  //categoryForm?: FormGroup; // definição de Formulario
   pageTitle?: string; // titulo da página, Editando ou
   serverErrorMessages?: string[]; // array de erros, mensagems retornadas do servidor
   submittingForm: boolean = false; // Controlar botão de submeter, desabilitar até que o server retorne uma resposta
   entry: Entry = new Entry(); // proprio objeto de Category
+  categories?: Array<Categorie>;
 
   imaskConfig = {
     mask: Number,
@@ -87,17 +90,18 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private primeNGConfig: PrimeNGConfig
+    private primeNGConfig: PrimeNGConfig,
+    private categorieService: CategoryService
   ) {}
 
   form = this.formBuilder.group({
     id: [0],
     name: ['', [Validators.required, Validators.minLength(3)]],
     description: ['', [Validators.required, Validators.minLength(3)]],
-    type: ['', [Validators.required]],
+    type: ['expense', [Validators.required]],
     amount: ['', [Validators.required]],
     date: ['', [Validators.required]],
-    paid: [true || false, [Validators.required]],
+    paid: [true, [Validators.required]],
     categorieId: [0, [Validators.required]],
   });
 
@@ -105,6 +109,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     this.setCurrentAction(); // IDENTIFICAR SE ESTA EDITANDO OU CRIANDO
     this.loadEntry(); // VERIFICAR SE ESTA EDITANTO OU CRIANDO
     this.primeNGConfig.setTranslation(this.ptBR);
+    this.loadCategories();
   }
 
   ngAfterContentChecked(): void {
@@ -117,6 +122,11 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     else this.updateEntry();
   }
 
+  get typeOptions(): Array<any> {
+    return Object.entries(Entry.types).map(([val, tex]) => {
+      return { text: tex, value: val };
+    });
+  }
   //PRIVATE METHODS
   private setCurrentAction() {
     const actionCreate = this.route.snapshot.url[0].path == 'new';
@@ -141,6 +151,12 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
             alert('Ocorreu um erro no servior, tente mais tarde!'),
         });
     }
+  }
+
+  private loadCategories() {
+    this.categorieService
+      .getll()
+      .subscribe((categories) => (this.categories = categories));
   }
 
   private setPageTitle() {
