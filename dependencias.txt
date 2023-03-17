@@ -1,0 +1,1 @@
+npm i angular-imask angular-in-memory-web-api bootstrap chart.js currency-formatter jquery moment primeicons primeng toastr
