@@ -36,7 +36,7 @@ export class InMemoryDatabase implements InMemoryDbService {
       {
         id: 1,
         name: 'Gás de Cozinha',
-        categorieId: categories[0],
+        categorieId: categories[0].id,
         categorie: categories[0],
         paid: true,
         date: '14/10/2018',
@@ -47,9 +47,9 @@ export class InMemoryDatabase implements InMemoryDbService {
       {
         id: 2,
         name: 'Suplementos',
-        categorieId: categories[1],
+        categorieId: categories[1].id,
         categorie: categories[1],
-        paid: false,
+        paid: true,
         date: '14/10/2018',
         amount: '15,00',
         type: 'revenue',

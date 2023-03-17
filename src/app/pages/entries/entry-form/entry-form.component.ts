@@ -29,7 +29,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   serverErrorMessages?: string[]; // array de erros, mensagems retornadas do servidor
   submittingForm: boolean = false; // Controlar botão de submeter, desabilitar até que o server retorne uma resposta
   entry: Entry = new Entry(); // proprio objeto de Category
-  categories?: Array<Categorie>;
+  categories1?: Array<Categorie>;
 
   imaskConfig = {
     mask: Number,
@@ -98,7 +98,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     id: [0],
     name: ['', [Validators.required, Validators.minLength(3)]],
     description: ['', [Validators.required, Validators.minLength(3)]],
-    type: ['expense', [Validators.required]],
+    type: ['', [Validators.required]],
     amount: ['', [Validators.required]],
     date: ['', [Validators.required]],
     paid: [true, [Validators.required]],
@@ -123,10 +123,11 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   }
 
   get typeOptions(): Array<any> {
-    return Object.entries(Entry.types).map(([val, tex]) => {
-      return { text: tex, value: val };
+    return Object.entries(Entry.types).map(([value, text]) => {
+      return { text: text, value: value };
     });
   }
+
   //PRIVATE METHODS
   private setCurrentAction() {
     const actionCreate = this.route.snapshot.url[0].path == 'new';
@@ -145,7 +146,8 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
         .subscribe({
           next: (entry) => {
             this.entry = entry;
-            this.form.patchValue(entry); // Binds loaded entry data to CategoryForm
+            this.form.patchValue(entry);
+            console.table(entry); // Binds loaded entry data to CategoryForm
           },
           error: (error) =>
             alert('Ocorreu um erro no servior, tente mais tarde!'),
@@ -156,7 +158,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   private loadCategories() {
     this.categorieService
       .getll()
-      .subscribe((categories) => (this.categories = categories));
+      .subscribe((categories) => (this.categories1 = categories));
   }
 
   private setPageTitle() {

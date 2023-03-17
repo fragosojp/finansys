@@ -38,7 +38,7 @@
             id="type"
             formControlName="type"
           >
-            <option *ngFor="let option of typeOptions" [value]="option.value">
+            <option *ngFor="let option of typeOptions" [ngValue]="option.value">
               {{ option.text }}
             </option>
           </select>
@@ -171,7 +171,7 @@
             id="categorieId"
             formControlName="categorieId"
           >
-            <option *ngFor="let category of categories" [value]="category.id">
+            <option *ngFor="let category of categories1" [value]="category.id">
               {{ category.name }}
             </option>
           </select>
@@ -217,3 +217,5 @@
     Salvar
   </button>
 </form>
+
+<pre>{{ form.value | json }}</pre>
