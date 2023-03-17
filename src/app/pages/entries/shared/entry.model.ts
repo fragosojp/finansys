@@ -1,8 +1,9 @@
-import { Categorie } from './../../categories/shared/categorie.model';
+import { Category } from './../../categories/shared/categorie.model';
+import { BaseResourceModel } from '../../../shared/models/base-resource.model';
 
-export class Entry {
+export class Entry extends BaseResourceModel {
   constructor(
-    public id?: number,
+    public override id?: number,
     public name?: string,
     public description?: string,
     public type?: string,
@@ -10,8 +11,10 @@ export class Entry {
     public date?: string,
     public paid?: boolean,
     public categorieId?: number,
-    public categorie?: Categorie
-  ) {}
+    public categorie?: Category
+  ) {
+    super();
+  }
 
   static types = {
     revenue: 'Receita',

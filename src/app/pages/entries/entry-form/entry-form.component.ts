@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs';
 
 import * as toastr from 'toastr';
 
-import { Categorie } from '../../categories/shared/categorie.model';
+import { Category } from '../../categories/shared/categorie.model';
 import { CategoryService } from '../../categories/shared/category.service';
 
 import { Entry } from '../shared/entry.model';
@@ -29,7 +29,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   serverErrorMessages?: string[]; // array de erros, mensagems retornadas do servidor
   submittingForm: boolean = false; // Controlar botão de submeter, desabilitar até que o server retorne uma resposta
   entry: Entry = new Entry(); // proprio objeto de Category
-  categories1?: Array<Categorie>;
+  categories1?: Array<Category>;
 
   imaskConfig = {
     mask: Number,

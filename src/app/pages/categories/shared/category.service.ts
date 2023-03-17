@@ -3,7 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
-import { Categorie } from './categorie.model';
+import { Category } from './categorie.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,27 +13,27 @@ export class CategoryService {
 
   constructor(private http: HttpClient) {}
 
-  getll(): Observable<Categorie[]> {
+  getll(): Observable<Category[]> {
     return this.http
       .get(this.apiPath)
       .pipe(catchError(this.handleError), map(this.jsonDatatoCategories));
   }
 
   //METHOD RETURN CATEGORIA ID
-  getById(id: number): Observable<Categorie> {
+  getById(id: number): Observable<Category> {
     const url = `${this.apiPath}/${id}`;
     return this.http
       .get(url)
       .pipe(catchError(this.handleError), map(this.jsonDatatoCategorie));
   }
 
-  create(categorie: Categorie): Observable<Categorie> {
+  create(categorie: Category): Observable<Category> {
     return this.http
       .post(this.apiPath, categorie)
       .pipe(catchError(this.handleError), map(this.jsonDatatoCategorie));
   }
 
-  update(categorie: Categorie): Observable<Categorie> {
+  update(categorie: Category): Observable<Category> {
     const url = `${this.apiPath}/${categorie.id}`;
 
     return this.http.put(url, categorie).pipe(
@@ -52,14 +52,14 @@ export class CategoryService {
 
   //PRIVATE METHODS
 
-  private jsonDatatoCategories(jsonData: any[]): Categorie[] {
-    const categories: Categorie[] = [];
-    jsonData.forEach((e) => categories.push(e as Categorie));
+  private jsonDatatoCategories(jsonData: any[]): Category[] {
+    const categories: Category[] = [];
+    jsonData.forEach((e) => categories.push(e as Category));
     return categories;
   }
 
-  private jsonDatatoCategorie(jsonData: any): Categorie {
-    return jsonData as Categorie;
+  private jsonDatatoCategorie(jsonData: any): Category {
+    return jsonData as Category;
   }
 
   private handleError(error: any): Observable<any> {

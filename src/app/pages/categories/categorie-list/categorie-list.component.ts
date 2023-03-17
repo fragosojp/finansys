@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Categorie } from '../shared/categorie.model';
+import { Category } from '../shared/categorie.model';
 import { CategoryService } from '../shared/category.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { CategoryService } from '../shared/category.service';
   styleUrls: ['./categorie-list.component.css'],
 })
 export class CategorieListComponent implements OnInit {
-  categories: Categorie[] = [];
+  categories: Category[] = [];
 
   constructor(private categorieService: CategoryService) {}
 
@@ -19,7 +19,7 @@ export class CategorieListComponent implements OnInit {
     );
   }
 
-  deleteCategorie(categorie: Categorie): void {
+  deleteCategorie(categorie: Category): void {
     const mustDelete = confirm('Deseja realmente excluir este item?');
 
     if (mustDelete)

@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Categorie } from '../shared/categorie.model';
+import { Category } from '../shared/categorie.model';
 import { CategoryService } from '../shared/category.service';
 
 import { switchMap } from 'rxjs';
@@ -25,7 +25,7 @@ export class CategorieFormComponent implements OnInit, AfterContentChecked {
   pageTitle?: string; // titulo da página, Editando ou
   serverErrorMessages?: string[]; // array de erros, mensagems retornadas do servidor
   submittingForm: boolean = false; // Controlar botão de submeter, desabilitar até que o server retorne uma resposta
-  categorie: Categorie = new Categorie(); // proprio objeto de Category
+  categorie: Category = new Category(); // proprio objeto de Category
 
   form = this.formBuilder.group({
     id: [0],
@@ -91,10 +91,7 @@ export class CategorieFormComponent implements OnInit, AfterContentChecked {
   }
 
   public createCategorie() {
-    const categorie: Categorie = Object.assign(
-      new Categorie(),
-      this.form.value
-    );
+    const categorie: Category = Object.assign(new Category(), this.form.value);
     this.categoryService.create(categorie).subscribe({
       next: (categorie) => this.actionsFormSucess(categorie),
       error: (error) => this.actionsForError(error),
@@ -102,20 +99,15 @@ export class CategorieFormComponent implements OnInit, AfterContentChecked {
   }
 
   private updateCategorie() {
-    const categorie: Categorie = Object.assign(
-      new Categorie(),
-      this.form.value
-    );
+    const categorie: Category = Object.assign(new Category(), this.form.value);
     console.log(categorie);
-    this.categoryService
-      .update(categorie)
-      .subscribe({
-        next: (categorie) => this.actionsFormSucess(categorie),
-        error: (error) => this.actionsForError(error),
-      });
+    this.categoryService.update(categorie).subscribe({
+      next: (categorie) => this.actionsFormSucess(categorie),
+      error: (error) => this.actionsForError(error),
+    });
   }
 
-  private actionsFormSucess(categorie: Categorie) {
+  private actionsFormSucess(categorie: Category) {
     toastr.success('Solicitação Processada com sucesso!');
     this.router
       .navigateByUrl('categories', { skipLocationChange: true }) // não cria um historico de navegação com o metodo skipLocationChange
