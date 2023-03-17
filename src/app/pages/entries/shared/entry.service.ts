@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, mergeMap, map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 import { Entry } from './entry.model';
+import { CategoryService } from '../../categories/shared/category.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,10 @@ import { Entry } from './entry.model';
 export class EntryService {
   private apiPath: string = 'api/entries';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private categoryService: CategoryService
+  ) {}
 
   getll(): Observable<Entry[]> {
     return this.http
@@ -28,17 +32,29 @@ export class EntryService {
   }
 
   create(entry: Entry): Observable<Entry> {
-    return this.http
-      .post(this.apiPath, entry)
-      .pipe(catchError(this.handleError), map(this.jsonDatatoEntrie));
+    return this.categoryService.getById(Number(entry.categorieId)).pipe(
+      mergeMap((category) => {
+        entry.categorie = category;
+
+        return this.http
+          .post(this.apiPath, entry)
+          .pipe(catchError(this.handleError), map(this.jsonDatatoEntrie));
+      })
+    );
   }
 
   update(entry: Entry): Observable<Entry> {
     const url = `${this.apiPath}/${entry.id}`;
 
-    return this.http.put(url, entry).pipe(
-      catchError(this.handleError),
-      map(() => entry)
+    return this.categoryService.getById(Number(entry.categorieId)).pipe(
+      mergeMap((category) => {
+        entry.categorie = category;
+
+        return this.http.put(url, entry).pipe(
+          catchError(this.handleError),
+          map(() => entry)
+        );
+      })
     );
   }
 
