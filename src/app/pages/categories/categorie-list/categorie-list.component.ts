@@ -13,7 +13,7 @@ export class CategorieListComponent implements OnInit {
   constructor(private categorieService: CategoryService) {}
 
   ngOnInit(): void {
-    this.categorieService.getll().subscribe(
+    this.categorieService.getAll().subscribe(
       (categories) => (this.categories = categories),
       (error) => alert('Erro ao carregar a lista')
     );

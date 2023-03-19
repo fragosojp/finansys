@@ -9,6 +9,6 @@ import { BaseRourceService } from 'src/app/shared/services/base-resource.service
 })
 export class CategoryService extends BaseRourceService<Category> {
   constructor(protected override injector: Injector) {
-    super('api/categories', injector);
+    super('api/categories', injector, Category.fromJson);
   }
 }

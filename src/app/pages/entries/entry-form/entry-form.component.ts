@@ -157,7 +157,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 
   private loadCategories() {
     this.categorieService
-      .getll()
+      .getAll()
       .subscribe((categories) => (this.categories1 = categories));
   }
 
@@ -171,7 +171,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   }
 
   public createEntry() {
-    const entry: Entry = Object.assign(new Entry(), this.form.value);
+    const entry: Entry = Entry.fromJson(this.form.value);
     this.entryService.create(entry).subscribe({
       next: (entry) => this.actionsFormSucess(entry),
       error: (error) => this.actionsForError(error),
@@ -179,7 +179,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private updateEntry() {
-    const entry: Entry = Object.assign(new Entry(), this.form.value);
+    const entry: Entry = Entry.fromJson(this.form.value);
     console.log(entry);
     this.entryService.update(entry).subscribe({
       next: (entry) => this.actionsFormSucess(entry),

@@ -13,7 +13,7 @@ export class EntryListComponent implements OnInit {
   constructor(private entryService: EntryService) {}
 
   ngOnInit(): void {
-    this.entryService.getll().subscribe({
+    this.entryService.getAll().subscribe({
       next: (entries) =>
         (this.entries = entries.sort((a, b) => {
           return Number(b.id) - Number(a.id);
