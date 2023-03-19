@@ -164,25 +164,25 @@
 
         <!-- Categorie -->
         <div class="form-group col-md-3">
-          <label for="categorieId">Categoria</label>
+          <label for="categoryId">Categoria</label>
           <select
             class="form-control"
-            name="categorieId"
-            id="categorieId"
-            formControlName="categorieId"
+            name="categoryId"
+            id="categoryId"
+            formControlName="categoryId"
           >
-            <option *ngFor="let category of categories1" [value]="category.id">
+            <option *ngFor="let category of categories" [value]="category.id">
               {{ category.name }}
             </option>
           </select>
           <div
             class="text-danger"
             *ngIf="
-              form.controls['categorieId'].invalid &&
-              form.controls['categorieId'].touched
+              form.controls['categoryId'].invalid &&
+              form.controls['categoryId'].touched
             "
           >
-            <div *ngIf="form.controls['categorieId'].hasError('required')">
+            <div *ngIf="form.controls['categoryId'].hasError('required')">
               Dados obrigatórios
             </div>
           </div>

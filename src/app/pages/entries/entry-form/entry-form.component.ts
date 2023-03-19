@@ -29,7 +29,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   serverErrorMessages?: string[]; // array de erros, mensagems retornadas do servidor
   submittingForm: boolean = false; // Controlar botão de submeter, desabilitar até que o server retorne uma resposta
   entry: Entry = new Entry(); // proprio objeto de Category
-  categories1?: Array<Category>;
+  categories?: Array<Category>;
 
   imaskConfig = {
     mask: Number,
@@ -102,7 +102,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     amount: ['', [Validators.required]],
     date: ['', [Validators.required]],
     paid: [true, [Validators.required]],
-    categorieId: [0, [Validators.required]],
+    categoryId: [0, [Validators.required]],
   });
 
   ngOnInit() {
@@ -147,7 +147,6 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
           next: (entry) => {
             this.entry = entry;
             this.form.patchValue(entry);
-            console.table(entry); // Binds loaded entry data to CategoryForm
           },
           error: (error) =>
             alert('Ocorreu um erro no servior, tente mais tarde!'),
@@ -158,7 +157,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   private loadCategories() {
     this.categorieService
       .getAll()
-      .subscribe((categories) => (this.categories1 = categories));
+      .subscribe((categories) => (this.categories = categories));
   }
 
   private setPageTitle() {
@@ -172,6 +171,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 
   public createEntry() {
     const entry: Entry = Entry.fromJson(this.form.value);
+
     this.entryService.create(entry).subscribe({
       next: (entry) => this.actionsFormSucess(entry),
       error: (error) => this.actionsForError(error),
@@ -180,7 +180,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
 
   private updateEntry() {
     const entry: Entry = Entry.fromJson(this.form.value);
-    console.log(entry);
+
     this.entryService.update(entry).subscribe({
       next: (entry) => this.actionsFormSucess(entry),
       error: (error) => this.actionsForError(error),

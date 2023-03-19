@@ -38,8 +38,10 @@ export abstract class BaseRourceService<T extends BaseResourceModel> {
   }
 
   create(resouce: T): Observable<T> {
+    const url = `${this.apiPath}/${resouce.id}`;
+    console.log(url);
     return this.http
-      .post(this.apiPath, resouce)
+      .post(url, resouce)
       .pipe(
         map(this.jsonDataToResource.bind(this)),
         catchError(this.handleError)
