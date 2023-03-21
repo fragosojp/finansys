@@ -26,7 +26,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let categorie of categories">
+    <tr *ngFor="let categorie of resources">
       <td>
         <strong>{{ categorie.name }}</strong
         ><br /><small>{{ categorie.description }}</small>
@@ -39,7 +39,7 @@
         >
 
         <a
-          (click)="deleteCategorie(categorie)"
+          (click)="deleteResource(categorie)"
           class="btn btn-outline-danger btn-sm"
           >Excluir</a
         >
