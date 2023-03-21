@@ -19,7 +19,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel>
   implements OnInit, AfterContentChecked
 {
   currentAction: string = 'new'; // Novo / Alterar
-  resourceForm?: FormGroup; // definição de Formulario
+  resourceForm!: FormGroup; // definição de Formulario
   pageTitle?: string; // titulo da página, Editando ou
   serverErrorMessages?: string[]; // array de erros, mensagems retornadas do servidor
   submittingForm: boolean = false; // Controlar botão de submeter, desabilitar até que o server retorne uma resposta
