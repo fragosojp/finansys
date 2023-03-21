@@ -98,6 +98,7 @@ export class EntryFormComponent
   override ngOnInit() {
     this.loadCategories();
     super.ngOnInit();
+    this.primeNGConfig.setTranslation(this.ptBR);
   }
 
   get typeOptions(): Array<any> {
