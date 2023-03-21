@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<form [formGroup]="form" (submit)="submitForm()">
+<form [formGroup]="resourceForm" (submit)="submitForm()">
   <div class="card mb-3">
     <div class="card-header">Informações sobre o lançamento</div>
 
@@ -45,10 +45,11 @@
           <div
             class="text-danger"
             *ngIf="
-              form.controls['type'].invalid && form.controls['type'].touched
+              resourceForm.controls['type'].invalid &&
+              resourceForm.controls['type'].touched
             "
           >
-            <div *ngIf="form.controls['type'].hasError('required')">
+            <div *ngIf="resourceForm.controls['type'].hasError('required')">
               Dados obrigatórios
             </div>
           </div>
@@ -66,13 +67,14 @@
           <div
             class="text-danger"
             *ngIf="
-              form.controls['name'].invalid && form.controls['name'].touched
+              resourceForm.controls['name'].invalid &&
+              resourceForm.controls['name'].touched
             "
           >
-            <div *ngIf="form.controls['name'].hasError('required')">
+            <div *ngIf="resourceForm.controls['name'].hasError('required')">
               Dados obrigatórios
             </div>
-            <div *ngIf="form.controls['name'].hasError('minlength')">
+            <div *ngIf="resourceForm.controls['name'].hasError('minlength')">
               Devew ter no mínimo 2 caracteres
             </div>
           </div>
@@ -96,10 +98,11 @@
           <div
             class="text-danger"
             *ngIf="
-              form.controls['amount'].invalid && form.controls['amount'].touched
+              resourceForm.controls['amount'].invalid &&
+              resourceForm.controls['amount'].touched
             "
           >
-            <div *ngIf="form.controls['amount'].hasError('required')">
+            <div *ngIf="resourceForm.controls['amount'].hasError('required')">
               Dados obrigatórios
             </div>
           </div>
@@ -120,10 +123,11 @@
           <div
             class="text-danger"
             *ngIf="
-              form.controls['date'].invalid && form.controls['date'].touched
+              resourceForm.controls['date'].invalid &&
+              resourceForm.controls['date'].touched
             "
           >
-            <div *ngIf="form.controls['date'].hasError('required')">
+            <div *ngIf="resourceForm.controls['date'].hasError('required')">
               Dados obrigatórios
             </div>
           </div>
@@ -137,14 +141,14 @@
           <br />
           <div class="btn-group">
             <label
-              (click)="form.get('paid')?.setValue(true)"
-              [class.active]="form.get('paid')?.value == true"
+              (click)="resourceForm.get('paid')?.setValue(true)"
+              [class.active]="resourceForm.get('paid')?.value == true"
               class="btn btn-outline-info"
               >Pago</label
             >
             <label
-              (click)="form.get('paid')?.setValue(false)"
-              [class.active]="form.get('paid')?.value == false"
+              (click)="resourceForm.get('paid')?.setValue(false)"
+              [class.active]="resourceForm.get('paid')?.value == false"
               class="btn btn-outline-info"
               >Pendente</label
             >
@@ -153,10 +157,11 @@
           <div
             class="text-danger"
             *ngIf="
-              form.controls['paid'].invalid && form.controls['paid'].touched
+              resourceForm.controls['paid'].invalid &&
+              resourceForm.controls['paid'].touched
             "
           >
-            <div *ngIf="form.controls['paid'].hasError('required')">
+            <div *ngIf="resourceForm.controls['paid'].hasError('required')">
               Dados obrigatórios
             </div>
           </div>
@@ -178,11 +183,13 @@
           <div
             class="text-danger"
             *ngIf="
-              form.controls['categoryId'].invalid &&
-              form.controls['categoryId'].touched
+              resourceForm.controls['categoryId'].invalid &&
+              resourceForm.controls['categoryId'].touched
             "
           >
-            <div *ngIf="form.controls['categoryId'].hasError('required')">
+            <div
+              *ngIf="resourceForm.controls['categoryId'].hasError('required')"
+            >
               Dados obrigatórios
             </div>
           </div>
@@ -210,7 +217,7 @@
   </div>
 
   <button
-    [disabled]="form.invalid"
+    [disabled]="resourceForm.invalid"
     type="submit"
     class="btn btn-primary btn-lg float-end"
   >
@@ -218,4 +225,4 @@
   </button>
 </form>
 
-<pre>{{ form.value | json }}</pre>
+<pre>{{ resourceForm.value | json }}</pre>

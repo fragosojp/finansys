@@ -27,13 +27,12 @@ export class CategoryFormComponent extends BaseResourceFormComponent<Category> {
     });
   }
 
-  //sobreescrever os metos da classe base
   protected override creationPageTitle(): string {
     return 'Cadastro de Nova Categoria';
   }
 
   protected override editionPageTitle(): string {
-    const categoryName = this.resource.name || '';
-    return `Editando Categoria: ${categoryName}`;
+    const resourceName = this.resource.name || '';
+    return `Editando Categoria: ${resourceName}`;
   }
 }
