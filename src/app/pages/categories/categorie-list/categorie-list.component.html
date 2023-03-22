@@ -1,13 +1,11 @@
 <app-bread-crumb [items]="[{ text: 'Categorias' }]"></app-bread-crumb>
 
-<div class="row mb-4">
-  <div class="col-md">
-    <h1 class="h2 border-start pl-2">Categorias</h1>
-  </div>
-  <div class="col-md">
-    <a routerLink="new" class="btn btn-success float-end">+ Nova Categoria</a>
-  </div>
-</div>
+<app-paga-header
+  page-title="Categorias"
+  button-text="+ Nova Categoria"
+  button-link="new"
+  button-class="btn-success"
+></app-paga-header>
 
 <table class="table table-hover">
   <thead>
