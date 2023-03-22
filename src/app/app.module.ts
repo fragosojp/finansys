@@ -8,9 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [CoreModule, AppRoutingModule],
-  providers: [
-    /*{ provide: LOCALE_ID, useValue: 'pt-BR' }*/
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
