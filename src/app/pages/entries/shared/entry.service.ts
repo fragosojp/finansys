@@ -9,8 +9,6 @@ import { mergeMap, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class EntryService extends BaseRourceService<Entry> {
-  protected override apiPath: string = 'api/entries';
-
   constructor(
     protected override injector: Injector,
     private categoryService: CategoryService
