@@ -84,17 +84,6 @@ export class EntryFormComponent
     super(injector, new Entry(), entryService, Entry.fromJson);
   }
 
-  form = this.formBuilder.group({
-    id: [0],
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    description: ['', [Validators.required, Validators.minLength(3)]],
-    type: ['', [Validators.required]],
-    amount: ['', [Validators.required]],
-    date: ['', [Validators.required]],
-    paid: [true, [Validators.required]],
-    categoryId: [0, [Validators.required]],
-  });
-
   override ngOnInit() {
     this.loadCategories();
     super.ngOnInit();
@@ -112,7 +101,7 @@ export class EntryFormComponent
       id: [0],
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(3)]],
-      type: ['', [Validators.required]],
+      type: ['expense', [Validators.required]],
       amount: ['', [Validators.required]],
       date: ['', [Validators.required]],
       paid: [true, [Validators.required]],
