@@ -18,17 +18,18 @@ export class ReportsComponent implements OnInit {
   revenueTotal: any = 0;
   balance: any = 0;
 
-  exprenseChartData: any;
   revenueChartData: any;
+  expenseChartData: any;
+
   chartOptions = {
     scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
+      y: {
+        display: true,
+        title: {
+          display: false,
+          text: 'value',
         },
-      ],
+      },
     },
   };
 
@@ -59,8 +60,6 @@ export class ReportsComponent implements OnInit {
       this.entryService
         .getByMonthAndYear(month, year)
         .subscribe(this.setValues.bind(this));
-
-    this.setChartData();
   }
 
   private setValues(entries: Entry[]) {
@@ -92,16 +91,53 @@ export class ReportsComponent implements OnInit {
   }
 
   private setChartData() {
+    this.revenueChartData = this.getCharData(
+      'revenue',
+      'Gráfico de Receitas',
+      '#9CCC65'
+    );
+    this.expenseChartData = this.getCharData(
+      'expense',
+      'Gráfico de Despesas',
+      '#E03131'
+    );
+  }
+
+  private getCharData(entryType: string, title: string, color: string) {
+    const chartData: { categoryName?: string; totalAmount: number }[] = [];
+
     this.categories.forEach((category) => {
       //Filtrando lançamentos pela categoria
       const filteredEntries = this.entries.filter(
-        (entry) => entry.categoryId == category.id && entry.type == 'revenue'
+        (entry) => entry.categoryId == category.id && entry.type == entryType
       );
       //Se for encontrado lançamentos , some os valores no charData
       if (filteredEntries.length > 0) {
-        const totalAmount = filteredEntries.reduce((total, entry) => total);
-        console.log(totalAmount);
+        const totalAmount = filteredEntries.reduce(
+          (total, entry) =>
+            total +
+            currencyFormatter.unformat(entry.amount, {
+              code: 'BRL',
+            }),
+          0
+        );
+
+        chartData.push({
+          categoryName: category.name,
+          totalAmount: totalAmount,
+        });
       }
     });
+
+    return {
+      labels: chartData.map((item) => item.categoryName),
+      datasets: [
+        {
+          label: title,
+          backgroundColor: color,
+          data: chartData.map((item) => item.totalAmount),
+        },
+      ],
+    };
   }
 }
