@@ -23,20 +23,9 @@
             type="text"
             formControlName="name"
           />
-          <div
-            class="text-danger"
-            *ngIf="
-              resourceForm.controls['name'].invalid &&
-              resourceForm.controls['name'].touched
-            "
-          >
-            <div *ngIf="resourceForm.controls['name'].hasError('required')">
-              Dados obrigatórios
-            </div>
-            <div *ngIf="resourceForm.controls['name'].hasError('minlength')">
-              Devew ter no mínimo 2 caracteres
-            </div>
-          </div>
+          <app-form-field-error
+            [form-control]="resourceForm.controls['name']"
+          ></app-form-field-error>
         </div>
 
         <div class="form-group col-md-8">
