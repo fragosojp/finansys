@@ -1,1 +1,2 @@
-npm i angular-imask angular-in-memory-web-api bootstrap chart.js currency-formatter jquery moment primeicons primeng toastr
+npm i angular-imask angular-in-memory-web-api bootstrap chart.js jquery moment primeicons primeng toastr
+npm i --save-dev @types/currency-formatter
