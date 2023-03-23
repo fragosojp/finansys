@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BreadCrumbComponent } from './components/bread-crumb/bread-crumb.component';
 import { RouterModule } from '@angular/router';
-import { PagaHeaderComponent } from './components/paga-header/paga-header.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 import { ServerErrorMessagesComponent } from './components/server-error-messages/server-error-messages.component';
 @NgModule({
   declarations: [
     BreadCrumbComponent,
-    PagaHeaderComponent,
+    PageHeaderComponent,
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,
   ],
@@ -18,7 +18,7 @@ import { ServerErrorMessagesComponent } from './components/server-error-messages
     CommonModule,
     ReactiveFormsModule,
     BreadCrumbComponent,
-    PagaHeaderComponent,
+    PageHeaderComponent,
     FormFieldErrorComponent,
     ServerErrorMessagesComponent,
   ],

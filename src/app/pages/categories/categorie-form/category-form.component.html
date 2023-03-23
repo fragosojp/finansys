@@ -2,12 +2,12 @@
   [items]="[{ text: 'Categorias', link: '/categories' }, { text: pageTitle }]"
 ></app-bread-crumb>
 
-<app-paga-header
+<app-page-header
   [page-title]="pageTitle"
   button-text="Voltar"
   button-link="/categories"
   button-class="btn-light"
-></app-paga-header>
+></app-page-header>
 
 <form [formGroup]="resourceForm" (submit)="submitForm()">
   <div class="card mb-3">
