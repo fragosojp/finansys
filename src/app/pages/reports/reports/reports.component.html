@@ -1,1 +1,82 @@
-<p>reports works!</p>
+<app-bread-crumb [items]="[{ text: 'Relatórios' }]"></app-bread-crumb>
+
+<app-paga-header
+  page-title="Relatórios de receitas e despesas"
+></app-paga-header>
+
+<div class="card">
+  <div class="card-header">Selecione o Mês e Ano para gerar os relatórios</div>
+
+  <div class="card-body">
+    <div class="row">
+      <div class="form-group col-md-7">
+        <label for="month">Mês</label>
+        <select #month name="month" id="month" class="form-control">
+          <option value="">Selecione um mês</option>
+          <option value="1">Janeiro</option>
+          <option value="2">Fevereiro</option>
+          <option value="3">Março</option>
+          <option value="4">Abril</option>
+          <option value="5">Junho</option>
+          <option value="6">Julho</option>
+        </select>
+      </div>
+      <div class="form-group col-md-5">
+        <label for="month">Ano</label>
+        <select #month name="month" id="month" class="form-control">
+          <option value="">Selecione um ano</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+        </select>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div class="col-md text-end">
+        <button
+          type="button"
+          (click)="generateReports()"
+          class="btn btn-primary"
+        >
+          Gerar Relatórios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 text-center mt-5 mb-4">
+  <div class="col">
+    <div class="card text-center text-white bg-success">
+      <div class="card-header">TOTAL DE RECEITAS</div>
+      <div class="card-body">
+        <h3 class="card-title">1500</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card text-center text-white bg-danger">
+      <div class="card-header">TOTAL DE DESPESAS</div>
+      <div class="card-body">
+        <h3 class="card-title">500</h3>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card text-center text-white bg-info">
+      <div class="card-header">SALDO</div>
+      <div class="card-body">
+        <h3 class="card-title">1000</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="row mt-5 mb-4">
+  <div class="col-md-6">Grafico de receitas</div>
+  <div class="col-md-6">Grafico de despesas</div>
+</div>
