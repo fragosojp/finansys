@@ -1,6 +1,20 @@
-.bg-success {
-  background-color: #004d40 !important;
+.bg-success-m {
+  background-color: #1b5e20 !important;
 }
-.bg-danger {
+.bg-success-p {
+  background-color: #2e7d32 !important;
+}
+
+.bg-danger-m {
   background-color: #b71c1c !important;
+}
+.bg-danger-p {
+  background-color: #c62828 !important;
+}
+
+.bg-info-m {
+  background-color: #00838f !important;
+}
+.bg-info-p {
+  background-color: #0097a7 !important;
 }

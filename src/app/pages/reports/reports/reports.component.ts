@@ -22,6 +22,7 @@ export class ReportsComponent implements OnInit {
   expenseChartData: any;
 
   chartOptions = {
+    theme: 'light2',
     scales: {
       y: {
         display: true,
@@ -29,21 +30,6 @@ export class ReportsComponent implements OnInit {
           display: false,
           text: 'value',
         },
-      },
-    },
-    tooltips: {
-      intersect: false,
-    },
-
-    showTooltips: true,
-    title: {
-      display: true,
-      text: 'My Title',
-      fontSize: 16,
-    },
-    plugins: {
-      legend: {
-        display: false,
       },
     },
   };
@@ -109,13 +95,13 @@ export class ReportsComponent implements OnInit {
     this.revenueChartData = this.getCharData(
       'revenue',
       'Gráfico de Receitas',
-      'rgba(0, 77, 64, 0.2)',
+      'rgb(255, 255, 255, 1.5)',
       'rgb(0, 77, 64)'
     );
     this.expenseChartData = this.getCharData(
       'expense',
       'Gráfico de Despesas',
-      'rgba(183, 28, 28, 0.2)',
+      '#c62828',
       'rgb(183, 28, 28)'
     );
   }

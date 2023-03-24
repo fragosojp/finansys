@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #001e3c !important;
+}
+
+.bg-main {
+  background-color: #053360 !important;
+}
+.bg-mdark {
+  background-color: #001e3c !important;
+}
+.border-main {
+  border-color: rgb(38, 93, 151) !important;
+}
+.bg-mlight {
+  background-color: #eceff1 !important;
+}
+
+/*
+main: "#265D97",
+dark: "#003A75",
+light: "#757ce8",
+contrastText: "#fff",*/

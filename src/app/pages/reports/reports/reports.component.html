@@ -5,11 +5,13 @@
   [show-button]="false"
 ></app-page-header>
 
-<div class="card">
-  <div class="card-header">Selecione o Mês e Ano para gerar os relatórios</div>
+<div class="card border-main">
+  <div class="card-header bg-main text-white">
+    Selecione o Mês e Ano para gerar os relatórios
+  </div>
 
-  <div class="card-body">
-    <div class="row">
+  <div class="card-body bg-mdark">
+    <div class="row text-white">
       <div class="form-group col-md-7">
         <label for="month">Mês</label>
         <select #month name="month" id="month" class="form-control">
@@ -54,25 +56,25 @@
 
 <div class="row row-cols-1 row-cols-md-3 text-center mt-5 mb-4">
   <div class="col">
-    <div class="card text-center text-white bg-success">
+    <div class="card text-center text-white bg-success-m">
       <div class="card-header">TOTAL DE RECEITAS</div>
-      <div class="card-body">
+      <div class="card-body bg-success-p">
         <h3 class="card-title">{{ revenueTotal }}</h3>
       </div>
     </div>
   </div>
   <div class="col">
-    <div class="card text-center text-white bg-danger">
+    <div class="card text-center text-white bg-danger-m">
       <div class="card-header">TOTAL DE DESPESAS</div>
-      <div class="card-body">
+      <div class="card-body bg-danger-p">
         <h3 class="card-title">{{ expanseTotal }}</h3>
       </div>
     </div>
   </div>
   <div class="col">
-    <div class="card text-center text-white bg-info">
+    <div class="card text-center text-white bg-info-m">
       <div class="card-header">SALDO</div>
-      <div class="card-body">
+      <div class="card-body bg-info-p">
         <h3 class="card-title">{{ balance }}</h3>
       </div>
     </div>
