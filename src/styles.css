@@ -1,13 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  background-color: #001e3c !important;
+  background-color: #053360 !important;
 }
 
 .bg-main {
-  background-color: #053360 !important;
+  background-color: #001e3c !important;
 }
 .bg-mdark {
-  background-color: #001e3c !important;
+  background-color: #1c446b !important;
 }
 .border-main {
   border-color: rgb(38, 93, 151) !important;
