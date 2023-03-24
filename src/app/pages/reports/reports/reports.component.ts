@@ -31,6 +31,21 @@ export class ReportsComponent implements OnInit {
         },
       },
     },
+    tooltips: {
+      intersect: false,
+    },
+
+    showTooltips: true,
+    title: {
+      display: true,
+      text: 'My Title',
+      fontSize: 16,
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
   };
 
   categories: Category[] = [];
@@ -54,7 +69,7 @@ export class ReportsComponent implements OnInit {
     const month = this.month?.nativeElement.value;
     const year = this.year?.nativeElement.value;
 
-    if (!month || !month)
+    if (!month || !year)
       alert('Você precisa selecionar o mês e o ano apara gerar os relatorios ');
     else
       this.entryService
@@ -94,16 +109,23 @@ export class ReportsComponent implements OnInit {
     this.revenueChartData = this.getCharData(
       'revenue',
       'Gráfico de Receitas',
-      '#9CCC65'
+      'rgba(0, 77, 64, 0.2)',
+      'rgb(0, 77, 64)'
     );
     this.expenseChartData = this.getCharData(
       'expense',
       'Gráfico de Despesas',
-      '#E03131'
+      'rgba(183, 28, 28, 0.2)',
+      'rgb(183, 28, 28)'
     );
   }
 
-  private getCharData(entryType: string, title: string, color: string) {
+  private getCharData(
+    entryType: string,
+    title: string,
+    color: string,
+    borderColor: string
+  ) {
     const chartData: { categoryName?: string; totalAmount: number }[] = [];
 
     this.categories.forEach((category) => {
@@ -135,6 +157,8 @@ export class ReportsComponent implements OnInit {
         {
           label: title,
           backgroundColor: color,
+          borderColor: borderColor,
+          borderWidth: 1,
           data: chartData.map((item) => item.totalAmount),
         },
       ],
