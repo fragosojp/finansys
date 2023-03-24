@@ -22,7 +22,7 @@ export class ReportsComponent implements OnInit {
   expenseChartData: any;
 
   chartOptions = {
-    theme: 'light2',
+    color: 'white',
     scales: {
       y: {
         display: true,
@@ -95,7 +95,7 @@ export class ReportsComponent implements OnInit {
     this.revenueChartData = this.getCharData(
       'revenue',
       'Gráfico de Receitas',
-      'rgb(255, 255, 255, 1.5)',
+      '#2e7d32',
       'rgb(0, 77, 64)'
     );
     this.expenseChartData = this.getCharData(
