@@ -8,6 +8,8 @@ import { EntryService } from '../../entries/shared/entry.service';
 
 import * as currencyFormatter from 'currency-formatter';
 
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
@@ -20,15 +22,46 @@ export class ReportsComponent implements OnInit {
 
   revenueChartData: any;
   expenseChartData: any;
+  public lineChartPlugins = [ChartDataLabels];
 
   chartOptions = {
+    plugins: {
+      datalabels: {
+        color: '#ffffff',
+        font: {
+          size: 25,
+        },
+      },
+    },
     color: 'white',
+    legend: {
+      display: true,
+      position: 'top',
+    },
     scales: {
+      x: {
+        ticks: {
+          color: '#ebedef',
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.2)',
+        },
+      },
       y: {
         display: true,
         title: {
-          display: false,
-          text: 'value',
+          display: true,
+          text: 'R$',
+          color: 'white',
+          font: {
+            size: 16,
+          },
+        },
+        ticks: {
+          color: '#ebedef',
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.2)',
         },
       },
     },
@@ -148,6 +181,7 @@ export class ReportsComponent implements OnInit {
           data: chartData.map((item) => item.totalAmount),
         },
       ],
+      plugin: [ChartDataLabels],
     };
   }
 }

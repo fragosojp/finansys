@@ -22,6 +22,7 @@
     "angular-in-memory-web-api": "^0.15.0",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "currency-formatter": "^1.5.9",
     "jquery": "^3.6.4",
     "moment": "^2.29.4",
