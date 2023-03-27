@@ -17,21 +17,21 @@
   <tbody>
     <tr *ngFor="let categorie of resources">
       <td>
-        <strong>{{ categorie.name }}</strong
-        ><br /><small>{{ categorie.description }}</small>
+        <strong class="text-light">{{ categorie.name }}</strong
+        ><br /><small class="text-secondary">{{ categorie.description }}</small>
       </td>
       <td>
         <a
           [routerLink]="[categorie.id, 'edit']"
           class="btn btn-outline-info btn-sm me-3"
-          >Editar</a
-        >
+          ><i class="pi pi-pencil"></i
+        ></a>
 
         <a
           (click)="deleteResource(categorie)"
           class="btn btn-outline-danger btn-sm"
-          >Excluir</a
-        >
+          ><i class="pi pi-times-circle"></i
+        ></a>
       </td>
     </tr>
   </tbody>

@@ -19,11 +19,11 @@
   <tbody>
     <tr *ngFor="let entry of resources">
       <td>
-        <strong>{{ entry.name }}</strong
+        <strong class="text-light">{{ entry.name }}</strong
         ><br /><small class="text-success">{{ entry.date }}</small
         ><br /><small *ngIf="entry.description">{{ entry.description }}</small>
       </td>
-      <td>
+      <td class="text-light">
         {{ entry.category?.name }}
       </td>
       <td class="text-end">
@@ -42,12 +42,14 @@
         <a
           [routerLink]="[entry.id, 'edit']"
           class="btn btn-outline-info btn-sm me-3"
-          >Editar</a
-        >
+          ><i class="pi pi-pencil"></i
+        ></a>
 
-        <a (click)="deleteResource(entry)" class="btn btn-outline-danger btn-sm"
-          >Excluir</a
-        >
+        <a
+          (click)="deleteResource(entry)"
+          class="btn btn-outline-danger btn-sm me-3"
+          ><i class="pi pi-times-circle"></i
+        ></a>
       </td>
     </tr>
   </tbody>

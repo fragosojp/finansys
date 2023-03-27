@@ -7,7 +7,6 @@ import { Entry } from '../../entries/shared/entry.model';
 import { EntryService } from '../../entries/shared/entry.service';
 
 import * as currencyFormatter from 'currency-formatter';
-
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({

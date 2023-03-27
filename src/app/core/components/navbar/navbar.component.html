@@ -1,17 +1,20 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-main mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Finansys</a>
-    <button
+<nav
+  class="navbar fixed-top navbar-expand-lg bg-body-tertiary navbar-dark bg-main"
+>
+  <div class="container-fluid" (click)="SideNavToggle()">
+    <!--<button
       class="navbar-toggler"
       type="button"
       data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent"
       aria-expanded="false"
       aria-label="Toggle navigation"
-      (click)="navbarCollapsed = !navbarCollapsed"
+      (click)="SideNavToggle()"
     >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      (click)="navbarCollapsed = !navbarCollapsed"
+    </button>-->
+    <span class="navbar-toggler-icon"></span>
+    <a class="navbar-brand" href="#">Finansys</a>
     <div
       [class.collapse]="navbarCollapsed"
       class="collapse navbar-collapse"
